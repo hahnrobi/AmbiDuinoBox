@@ -7,14 +7,14 @@ However, due to various reasons (like testing) I wanted to be able to leave the 
 To use:
 1. Please already know your FastLED config before trying this, as it's always best to get the lights working with the 'FirstLight' example :)
 
-//-----------------------EDITABLE CONFIGURATION
-#define NUM_LEDS 176
-#define LED_TYPE WS2812B
-#define DATA_PIN 11
-//#define CLOCK_PIN 0
-#define COLOUR_ORDER RGB
-#define SERIAL_SPEED 512000
-//-----------------------EDITABLE CONFIGURATION
+    //-----------------------EDITABLE CONFIGURATION
+    #define NUM_LEDS 176
+    #define LED_TYPE WS2812B
+    #define DATA_PIN 11
+    //#define CLOCK_PIN 0
+    #define COLOUR_ORDER RGB
+    #define SERIAL_SPEED 512000
+    //-----------------------EDITABLE CONFIGURATION
 
 2. Edit the top section with your configuration, if you use LEDs with a clock pin, uncomment CLOCK_PIN, give it a value and swap the FastLED.addLeds line in 'setup()'
 3. The default speed I set here is 512,000, which is supported in the following ways:
