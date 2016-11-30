@@ -18,10 +18,12 @@ To use:
 
 2. Edit the top section with your configuration, if you use LEDs with a clock pin, uncomment CLOCK_PIN, give it a value and swap the FastLED.addLeds line in 'setup()'
 3. The default speed I set here is 512,000, which is supported in the following ways:
-  Ambibox: 'AtmoDuino' section from SerialPortConfig.ini in the Ambibox program files dir
-  Atmowin: Requires 1.0.0.9 from AtmoWin thread, change speed in device configuration option.
+
+    Ambibox: 'AtmoDuino' section from SerialPortConfig.ini in the Ambibox program files dir
+    Atmowin: Requires 1.0.0.9 from AtmoWin thread, change speed in device configuration option.
+    
 4. Try other speed values. If you have only a few LEDs then the standard arduino 115,200 will work ok, however that is not enough bandwidth for larger amounts of LEDs. It is also common to have some lower speeds fail despite higher ones working, most Unos can go pretty fast.
-5. Hope it works for you :)
+5. Hope it works for you
 
 
 
