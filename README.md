@@ -7,22 +7,24 @@ However, due to various reasons (like testing) I wanted to be able to leave the 
 To use:
 1. Please already know your FastLED config before trying this, as it's always best to get the lights working with the 'FirstLight' example :)
 
-    //-----------------------EDITABLE CONFIGURATION
-    #define NUM_LEDS 176
-    
-    #define LED_TYPE WS2812B
-    
-    #define DATA_PIN 11
-    
-    //#define CLOCK_PIN 0
-    
-    #define COLOUR_ORDER RGB
-    
-    #define SERIAL_SPEED 512000
-    
-    //-----------------------EDITABLE CONFIGURATION
+//-----------------------EDITABLE CONFIGURATION
 
-2. Edit the top section with your configuration, if you use LEDs with a clock pin, uncomment CLOCK_PIN, give it a value and swap the FastLED.addLeds line in 'setup()'
+#define NUM_LEDS 176
+
+#define LED_TYPE WS2812B
+
+#define DATA_PIN 11
+
+#define CLOCK_PIN 0 //leave at zero if no clock pin used
+
+#define COLOUR_ORDER RGB
+
+#define SERIAL_SPEED 512000
+
+//-----------------------EDITABLE CONFIGURATION
+
+2. Edit the top section with your configuration, if you use LEDs with a clock pin, change the number from zero to use the correct addLEDs call, or leave it at zero to ignore
+
 3. The default speed I set here is 512,000, which is supported in the following ways:
 
     Ambibox: 'AtmoDuino' section from SerialPortConfig.ini in the Ambibox program files dir
@@ -31,6 +33,7 @@ To use:
     
     
 4. Try other speed values. If you have only a few LEDs then the standard arduino 115,200 will work ok, however that is not enough bandwidth for larger amounts of LEDs. It is also common to have some lower speeds fail despite higher ones working, most Unos can go pretty fast.
+
 5. Hope it works for you
 
 
