@@ -3,7 +3,7 @@
 #define NUM_LEDS 176
 #define LED_TYPE WS2812B
 #define DATA_PIN 11
-//#define CLOCK_PIN 0
+#define CLOCK_PIN 0 //leave at zero if no clock pin used
 #define COLOUR_ORDER RGB
 #define SERIAL_SPEED 512000
 //-----------------------EDITABLE CONFIGURATION
@@ -18,12 +18,11 @@ const uint8_t numHeaders = 3;
 
 void setup() {
   Serial.begin(SERIAL_SPEED);
-
-  //If your LEDs have a clock pin, swap these two below:
-//-----------------------EDITABLE CONFIGURATION  
-  //FastLED.addLeds<LED_TYPE, DATA_PIN, CLOCK_PIN, COLOUR_ORDER>(leds, NUM_LEDS);
-  FastLED.addLeds<LED_TYPE, DATA_PIN, COLOUR_ORDER>(leds, NUM_LEDS);
-//-----------------------EDITABLE CONFIGURATION  
+  if (CLOCK_PIN == 0) {
+    FastLED.addLeds<LED_TYPE, DATA_PIN, COLOUR_ORDER>(leds, NUM_LEDS);    
+  } else {
+    FastLED.addLeds<LED_TYPE, DATA_PIN, CLOCK_PIN, COLOUR_ORDER>(leds, NUM_LEDS);
+  }
   clearLeds();
 }
 void loop() {
