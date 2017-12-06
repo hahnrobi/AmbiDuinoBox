@@ -9,18 +9,26 @@ To use:
 
     //-----------------------EDITABLE CONFIGURATION
     #define NUM_LEDS 176
+    
     #define LED_TYPE WS2812B
+    
     #define DATA_PIN 11
+    
     //#define CLOCK_PIN 0
+    
     #define COLOUR_ORDER RGB
+    
     #define SERIAL_SPEED 512000
+    
     //-----------------------EDITABLE CONFIGURATION
 
 2. Edit the top section with your configuration, if you use LEDs with a clock pin, uncomment CLOCK_PIN, give it a value and swap the FastLED.addLeds line in 'setup()'
 3. The default speed I set here is 512,000, which is supported in the following ways:
 
     Ambibox: 'AtmoDuino' section from SerialPortConfig.ini in the Ambibox program files dir
+    
     Atmowin: Requires 1.0.0.9 from AtmoWin thread, change speed in device configuration option.
+    
     
 4. Try other speed values. If you have only a few LEDs then the standard arduino 115,200 will work ok, however that is not enough bandwidth for larger amounts of LEDs. It is also common to have some lower speeds fail despite higher ones working, most Unos can go pretty fast.
 5. Hope it works for you
@@ -28,9 +36,13 @@ To use:
 
 
 Information about the detection for those interested:
+
 I worked out how to calculate the correct 4 bytes for each header type, this means you only need to enter the NUM_LEDS value:
 AtmoDuinoV2 - 0xD7, 0xEE, 0x23, NUM_LEDS - 1
+
 AtmoDuino on Ambibox - 0xFF, 0x00, 0x00, NUM_LEDS * 3 - this value can overflow, but when truncated the byte leftover is matching ambibox, so that is what ambibox appears to do too
+
 AtmoDuino on AtmoWin - 0xFF, 0x00, 0x00, NUM_LEDS
+
 
 So that the loop is not complex, it is only ensuring each header part received matches at least one predefined header, but it could do better. If anyone better at that sort of thing (I tried a success array but it took too long) then please let me know.
